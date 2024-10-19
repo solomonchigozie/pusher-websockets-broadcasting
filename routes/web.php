@@ -17,7 +17,7 @@ Route::get('/messages', function(){
 });
 
 Route::get('/send',  function() {
-    event(new NewMessageEvent('hello this is me'));
+    event(new NewMessageEvent('hello this is me', 1));
 });
 
 

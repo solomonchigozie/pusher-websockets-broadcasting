@@ -10,7 +10,24 @@ window.Echo = new Echo({
     forceTLS: true
 });
 
-window.Echo.channel('chat').listen('NewMessageEvent', (e) => {
+// for public channels
+
+// window.Echo.channel('chat').listen('NewMessageEvent', (e) => {
+//     console.log(e)
+//     document.getElementById('messages').innerHTML += `<p>${e.message}</p>`
+// })
+
+//for private channels
+// window.Echo.private('chat').listen('NewMessageEvent', (e) => {
+//     console.log(e)
+//     document.getElementById('messages').innerHTML += `<p>${e.message}</p>`
+// })
+
+
+/**with parameters */
+var userId = document.querySelector('meta[name="user_id"]').getAttribute('content')
+// console.log(userId)
+window.Echo.private('chat.'+ userId).listen('NewMessageEvent', (e) => {
     console.log(e)
     document.getElementById('messages').innerHTML += `<p>${e.message}</p>`
 })

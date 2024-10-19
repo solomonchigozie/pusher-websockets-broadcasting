@@ -18,7 +18,7 @@ class NewMessageEvent implements ShouldBroadcast
     /**
      * Create a new event instance.
      */
-    public function __construct($message)
+    public function __construct($message, public $id)
     {
         $this->message = $message;
     }
@@ -35,7 +35,7 @@ class NewMessageEvent implements ShouldBroadcast
             /**
              * public channel
              */
-            new Channel('chat'),
+            new PrivateChannel('chat.'.$this->id),
             // new PrivateChannel('channel-name'),
         ];
     }
