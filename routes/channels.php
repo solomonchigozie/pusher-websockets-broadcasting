@@ -14,3 +14,8 @@ Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
 Broadcast::channel('chat.{id}', function($user, $id){
     return $user->id == $id;
 });
+
+/**presence channel */
+Broadcast::channel('online', function($user){
+    return $user->toArray();
+});

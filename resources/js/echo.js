@@ -31,3 +31,16 @@ window.Echo.private('chat.'+ userId).listen('NewMessageEvent', (e) => {
     console.log(e)
     document.getElementById('messages').innerHTML += `<p>${e.message}</p>`
 })
+
+
+/**presende channel: we just need to listen to the channel */
+window.Echo.join('online')
+    .here(users => {
+        console.log(users);
+    })
+    .joining(user => {
+        console.log('joining ',user)
+    })
+    .leaving(user => {
+        console.log('leaving ',user)
+    })
